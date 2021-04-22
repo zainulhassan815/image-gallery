@@ -16,12 +16,13 @@ async function Get(url) {
 
 // Image Object to store preview and large image url, user's image and name and tags 
 
-function ImageData(thumbnail, image, user, userImage, shareUrl) {
+function ImageData(thumbnail, image, user, userImage, shareUrl,tags) {
     this.thumbnail = thumbnail;
     this.image = image;
     this.user = user;
     this.userImage = userImage;
     this.shareUrl = shareUrl;
+    this.tags = tags;
 }
 
 function parseJson(json) {
@@ -33,7 +34,8 @@ function parseJson(json) {
             object.largeImageURL,
             object.user,
             object.userImageURL,
-            object.pageURL
+            object.pageURL,
+            object.tags
         );
         images.push(image);
     })
@@ -43,8 +45,9 @@ function parseJson(json) {
 function createImage(parent, imageData) {
     let imageContainer = $(document.createElement('div'));
     imageContainer.attr('class', 'image');
+
     let image = $(document.createElement('img'));
-    image.attr('src', imageData.thumbnail);
+    image.attr({'src':imageData.thumbnail,'alt':imageData.tags});
     imageContainer.append(image);
 
     let overlay = $(document.createElement('div'));
@@ -57,20 +60,19 @@ function createImage(parent, imageData) {
 
     let userName = $(document.createElement('p'));
     userName.attr('class', 'user-name');
-    userName[0].innerText = imageData.user;
+    userName.text(imageData.user);
     overlay.append(userName);
 
     let viewBtn = $(document.createElement('button'));
-    viewBtn[0].innerText = "View";
+    viewBtn.text('View');
     viewBtn.attr('class', 'btn secondary-btn');
     overlay.append(viewBtn);
 
     viewBtn.on('click', function () {
         document.body.classList.add('overflow-hidden');
         let imageViewer = $('.image-viewer');
-        imageViewer[0].classList.add('active');
+        imageViewer.addClass('active');
         imageViewer.find('.preview').attr('src', imageData.image);
-        imageViewer.css('top', window.scrollX);
         imageUrl = imageData.shareUrl;
     });
 
@@ -94,11 +96,11 @@ function openFullscreen(element) {
 }
 
 function closeFullscreen() {
-    if (document.exitFullscreen) {
+    if (document.fullscreenElement) {
         document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
+    } else if (document.webkitFullscreenElement) { /* Safari */
         document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE11 */
+    } else if (document.msFullscreenElement) { /* IE11 */
         document.msExitFullscreen();
     }
 }
