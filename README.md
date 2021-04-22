@@ -10,3 +10,5 @@ This is a simple and minimal Image Gallery website inspired from Pixabay
 - JavaScript
 - JQuery
 - SASS
+
+<a href="https://zainulhassan815.github.io/imagegallery/">Visit Live Website</a>
