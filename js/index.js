@@ -51,12 +51,10 @@ $(() => {
     // Create Gallery in Home Page
     let paths = document.URL.split('/');
     let currentPage = paths[paths.length - 1];
-    if (currentPage == "index.html") {
+    if (currentPage == "index.html" || currentPage == "") {
         let imageContainer = $('.images-container')[0];
         let link = randomUrl();
         createGallery(link, imageContainer);
-    } else {
-
     }
 
     $('.close-btn').on('click', function () {
