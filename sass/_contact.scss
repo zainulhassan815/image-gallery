@@ -1,0 +1,39 @@
+.contact {
+    @include flex(row, 5rem 5rem);
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: 500;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .contact-image {
+        min-width: 320px;
+        max-width: 100%;
+    }
+
+    .form-container {
+        @include flex(column,1rem 1rem);
+        align-items: flex-start;
+        min-width: 320px;
+        max-width: 100%;
+
+        p {
+            max-width: 60ch;
+        }
+    }
+
+    .contact-form {
+        @include flex(column,1rem 1rem);
+        align-items: flex-start;
+        flex: 1.5;
+    }
+
+    .name-fields {
+        @include flex(row,.5rem .5rem);
+    }
+
+    .textbox-container {
+        @include flex(column,.3rem 0);
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,105 @@
+@import "./mixins";
+
+.navbar {
+    background-color: var(--background-color);
+    @include flex(row, 0 5rem);
+    height: 10vh;
+    padding: 1rem 0;
+    justify-content: space-between;
+
+    // Conatsiner holding all nav links
+    .nav-links {
+        @include flex(row, 1rem 1rem);
+        background-color: var(--background-color);
+        width: 100%;
+        justify-content: start;
+        flex: 1;
+        transition: transform ease-in 0.3s;
+
+        &.open {
+            transform: translateX(0);
+            z-index: 9;
+        }
+    }
+
+    // Individual nav links
+    .nav-link {
+        cursor: pointer;
+        padding: 0.5rem 0.5rem;
+        position: relative;
+        @include flex(column, 0);
+
+        &:hover,
+        &:focus {
+            opacity: 0.8;
+        }
+
+        &.active {
+            transition: all ease-in-out 0.2s;
+            &::after {
+                content: "";
+                display: block;
+                background-color: var(--secondary-color);
+                height: 1px;
+                width: 70%;
+                position: absolute;
+                bottom: 5%;
+                animation: line-expand ease-in 0.2s;
+            }
+        }
+
+        @keyframes line-expand {
+            from {
+                transform: scale(0, 0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1, 1);
+                opacity: 1;
+            }
+        }
+    }
+
+    // Icons Container
+    .nav-icons {
+        @include flex(row, 0 2rem);
+    }
+
+    // Toggle Nav Btn
+    .nav-toggle-btn {
+        transform: scale(0);
+        display: none;
+        z-index: 10;
+    }
+}
+
+@include max-width(1150px) {
+    .navbar {
+        .nav-links {
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            order: 3;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transition: transform ease-in 0.3s;
+            transform: translateX(100%);
+        }
+
+        .nav-toggle-btn {
+            display: flex;
+            transform: scale(1, 1);
+        }
+    }
+}
+
+@include max-width(600px) {
+    .navbar {
+        .icon-button.large:not(.nav-toggle-btn) {
+            display: none;
+        }
+    }
+}

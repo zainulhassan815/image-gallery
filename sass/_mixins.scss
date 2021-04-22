@@ -1,0 +1,44 @@
+// Centerd Flex Mixin
+@mixin flex($direction, $gap) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+// Media Query
+@mixin max-width($width) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
+
+// Icon Button
+@mixin iconBtn($size) {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    @include flex(row, 0);
+    background-color: var(--off-white-200);
+    transition: transform ease-in .1s;
+
+    &:hover{
+        transform: scale(1.1,1.1);
+        .icon{
+            stroke: var(--off-white-300);
+        }
+    }
+}
+
+// Icon
+@mixin icon($size-large,$size-small) {
+    height: $size-large;
+    width: $size-large;
+    display: block;
+    cursor: pointer;
+    &.small {
+        height: $size-small;
+        width: $size-small;
+    }
+}

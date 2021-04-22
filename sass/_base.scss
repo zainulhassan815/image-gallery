@@ -1,0 +1,241 @@
+@import "./mixins";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap");
+// Defining Variables
+:root {
+    --off-white-100: #e9e9e9;
+    --off-white-200: #d5d5d5;
+    --off-white-300: #9b9b9b;
+    --primary-color: #2d2d2d;
+    --secondary-color: #020202;
+    --tertiary-color: #4f4e4e;
+    --h1-font-size: 3.5rem;
+    --h3-font-size: 1.4rem;
+    --h2-font-size: 2.5rem;
+    --paragraph-font-size: 0.9rem;
+    --input-font-size: 0.9rem;
+    --link-font-size: 0.9rem;
+    --icon-size-large: 20px;
+    --icon-size-small: 16px;
+    --icon-button-size-large: calc(var(--icon-size-large) * 2);
+    --icon-button-size-small: calc(var(--icon-size-small) * 2);
+    --background-color: var(--off-white-100);
+    --background-color-2: var(--off-white-200);
+    --primary-button-color: var(--tertiary-color);
+    --btn-font-size: 0.9rem;
+    --avatar-size: 80px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", "Segoe UI", sans-serif;
+    font-size: 18px;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--tertiary-color);
+    background-color: var(--background-color);
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+
+    &.overflow-hidden {
+        overflow: hidden;
+    }
+}
+
+p {
+    max-width: 60ch;
+    letter-spacing: 0.5px;
+    font-size: var(--paragraph-font-size);
+}
+
+.user-name {
+    color: var(--off-white-100);
+    text-transform: capitalize;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-size: var(--link-font-size);
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+input,
+textarea {
+    font-size: var(--input-font-size);
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid var(--off-white-200);
+    border-radius: 2px;
+    transition: transform ease-in 0.1s;
+
+    &:hover,
+    &:focus {
+        border: none;
+        transform: scale(1.03, 1.03);
+    }
+}
+
+button {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: var(--h1-font-size);
+    color: var(--primary-color);
+    max-width: 24ch;
+    margin: 2rem 0;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: var(--h3-font-size);
+    color: var(--secondary-color);
+}
+
+h2 {
+    font-weight: 400;
+    max-width: 30ch;
+    color: var(--tertiary-color);
+    font-size: var(--h2-font-size);
+    line-height: 1.4;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+label {
+    font-weight: 300;
+    font-size: var(--label-font-size);
+}
+
+// Wrapper Class
+
+header,
+section,
+footer {
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+.avatar {
+    display: block;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    transition: transform ease-in 0.1s;
+
+    &:hover {
+        transform: scale(1.2, 1.2);
+    }
+}
+
+.wrapper {
+    padding: 4vh 4vw;
+}
+
+.expanded {
+    width: 100%;
+    background-color: var(--background-color-2);
+}
+
+.icon-button {
+    &.large {
+        @include iconBtn(var(--icon-button-size-large));
+    }
+
+    &.small {
+        @include iconBtn(var(--icon-button-size-small));
+    }
+}
+
+.icon {
+    // Icon Mixin
+    // $size-large : Specifies large icon size
+    // $size-small : Specifies small icon size
+    @include icon($size-large: var(--icon-size-large), $size-small: var(--icon-size-small));
+}
+
+.btn {
+    padding: 1rem 2rem;
+    color: var(--background-color);
+    font-weight: bold;
+    font-size: var(--btn-font-size);
+    border-radius: 2px;
+
+    &.primary-btn {
+        transition: opacity ease-in 0.1s;
+        background-color: var(--primary-button-color);
+    }
+
+    &.secondary-btn {
+        background-color: transparent;
+        border: 2px solid var(--background-color);
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+@include max-width(1150px) {
+    :root {
+        --link-font-size: 1rem;
+    }
+}
+
+@include max-width(800px) {
+    :root {
+        --h1-font-size: 3rem;
+        --h3-font-size: 1.2rem;
+        --h2-font-size: 2rem;
+    }
+
+    h1 {
+        margin: 1rem 0;
+    }
+
+    .wrapper {
+        padding: 0 4vw;
+    }
+
+    header,
+    section,
+    footer {
+        padding: 3rem 0rem;
+        width: 100%;
+    }
+}
+
+@include max-width(600px) {
+    :root {
+        --h1-font-size: 2.5rem;
+        --h3-font-size: 1.1rem;
+        --h2-font-size: 1.5rem;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Pixabay | Image Gallery</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <nav class="navbar">
+            <h3>Pixabay</h3>
+            <ul class="nav-links">
+                <li class="nav-link active"><a href="index.html">Home</a></li>
+                <li class="nav-link"><a href="#">Gallery</a></li>
+                <li class="nav-link"><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-button large"><img class="icon nav-icon" src="assets/icons/instagram.svg"></button>
+                <button class="icon-button large"><img class="icon nav-icon" src="assets/icons/search.svg"></button>
+                <button class="icon-button large"><img class="icon nav-icon" src="assets/icons/shopping-cart.svg"></button>
+                <button class="icon-button large nav-toggle-btn"><img class="icon nav-icon not-svg" src="assets/icons/menu.svg"></button>
+            </div>
+        </nav>
+        <main>
+            <header class="header">
+                <h1>Free images, videos and music you can use anywhere</h1>
+                <p>Pixabay is a vibrant community of creatives, sharing copyright free images, videos and music. All contents are released under the Pixabay License, which makes them safe to use without asking for permission or giving credit to the artist - even for commercial purposes.
+                </p>
+            </header>
+            <section class="images-section">
+                <div class="images-container">
+                </div>
+                <button class="btn primary-btn">See More</button>
+            </section>
+        </main>
+    </div>
+    <div class="expanded">
+        <div class="wrapper">
+            <section class="assignment-section">
+                <p>Join Pixabay</p>
+                <h2>Download royalty free photos, videos and music. Share your own pictures as public domain with people all over the world.</h2>
+                <button class="btn primary-btn">Sign Up, Its Free</button>
+            </section>
+        </div>
+    </div>
+    <div class="wrapper">
+        <footer class="footer">
+            <button class="icon-button small"><img class="icon small" src="assets/icons/instagram.svg"></button>
+            <button class="icon-button small"><img class="icon small" src="assets/icons/share.svg"></button>
+        </footer>
+    </div>
+    <div class="image-viewer">
+        <div class="image-options">
+            <button class="icon-button large share-btn"><img class="icon nav-icon" src="assets/icons/share.svg"></button>
+            <button class="icon-button large fullscreen-btn"><img class="icon nav-icon not-svg" src="assets/icons/maximize.svg"></button>
+            <button class="icon-button large close-btn"><img class="icon nav-icon" src="assets/icons/close.svg"></button>
+        </div>
+        <img class="preview">
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/svg-inject.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/helper.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+.header {
+    min-height: 50vh;
+    @include flex(column, 0);
+    justify-content: end;
+    align-items: flex-start;
+}
+
+.images-section {
+    width: 100%;
+    @include flex(column, 3rem 0);
+    align-items: flex-start;
+
+    .images-container {
+        width: 100%;
+        display: grid;
+        place-content: center;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-auto-rows: 400px;
+        gap: 0.5rem 0.5rem;
+    }
+
+    .image {
+        overflow: hidden;
+        border-radius: 5px;
+        transition: transform ease-in 0.2s;
+        position: relative;
+
+        .image-overlay {
+            position: absolute;
+            @include flex(column, 1rem 1rem);
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transition: all ease-in 0.2s;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            transform: scale(0);
+            overflow: hidden;
+        }
+
+        &:hover,
+        &:focus {
+            .image-overlay {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.assignment-section {
+    @include flex(column, 1rem 0);
+    align-items: flex-start;
+    min-height: 50vh;
+}
+
+.footer {
+    @include flex(row, 0 1rem);
+    justify-content: start;
+}
+
+.image-viewer {
+    background-color: var(--background-color);
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    bottom: 0;
+    height: 100vh;
+    @include flex(column,2rem 2rem);
+    padding: 1rem 3rem;
+    transition: transform ease-in .2s;
+    transform: scale(0);
+
+    img {
+        height: auto;
+        width: auto;
+        max-height: 90%;
+        max-width: 90%;
+        transition: all ease-in .2s;
+    }
+
+    &.active {
+        transform: scale(1);
+    }
+}
+
+.image-options {
+    @include flex(row,1rem 1rem);
+}
