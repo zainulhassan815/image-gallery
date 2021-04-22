@@ -80,7 +80,7 @@ function createImage(parent, imageData) {
 }
 
 function randomUrl() {
-    return 'https://pixabay.com/api/?key=16863692-e8a0487c2233e2197e5751647&min_width=450&safesearch=true&per_page=50&editors_choice=true&page=' + Math.round(Math.random() * 10);
+    return 'https://pixabay.com/api/?key=16863692-e8a0487c2233e2197e5751647&safesearch=true&per_page=50&editors_choice=true&page=' + Math.round(Math.random() * 10);
 }
 
 function openFullscreen(element) {
